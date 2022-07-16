@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:component": "hygen new fc",
+    "generate:page": "hygen new page-fc"
   },
   "dependencies": {
     "next": "12.2.2",
@@ -24,6 +26,7 @@
     "eslint-config-next": "12.2.2",
     "eslint-plugin-storybook": "^0.6.1",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "hygen": "^6.2.7",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.12",
