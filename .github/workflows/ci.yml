@@ -1,0 +1,76 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v1
+      - uses: actions/cache@v3
+        id: node_modules_cache_id
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-nodejs-b-${{ hashFiles('**/package-lock.json') }}
+      - if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
+        name: install node_modules
+        run: yarn
+
+  lint:
+    if: github.event_name != 'push'
+    needs: [setup]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v1
+      - uses: actions/cache@v3
+        id: node_modules_cache_id
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-nodejs-b-${{ hashFiles('**/package-lock.json') }}
+      - name: lint
+        run: yarn lint
+
+  # test:
+  #   if: github.event_name != 'push'
+  #   needs: [setup]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: volta-cli/action@v1
+  #     - uses: actions/cache@v3
+  #       id: node_modules_cache_id
+  #       env:
+  #         cache-name: cache-node-modules
+  #       with:
+  #         path: '**/node_modules'
+  #         key: ${{ runner.os }}-nodejs-b-${{ hashFiles('**/package-lock.json') }}
+  #     - name: test
+  #       run: npm run test
+
+  type-check:
+    if: github.event_name != 'push'
+    needs: [setup]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: volta-cli/action@v1
+      - uses: actions/cache@v3
+        id: node_modules_cache_id
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-nodejs-b-${{ hashFiles('**/package-lock.json') }}
+      - name: Type Check
+        run: yarn tsc

@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+      "redhat.vscode-yaml",
+      "firsttris.vscode-jest-runner",
+      "heybourn.headwind",
+      "eamodio.gitlens",
+      "mhutchie.git-graph",
+      "formulahendry.auto-rename-tag",
+      "steoates.autoimport",
+      "chunsen.bracket-select",
+      "vivaxy.vscode-conventional-commits"
+    ]
+  }
+  
