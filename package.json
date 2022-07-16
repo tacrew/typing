@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "git config --local core.hooksPath .githooks && chmod +x .githooks/pre-commit",
+    "precommit": "lint-staged",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -38,7 +40,9 @@
     "eslint-plugin-storybook": "^0.6.1",
     "eslint-plugin-unused-imports": "^2.0.0",
     "hygen": "^6.2.7",
+    "lint-staged": "^13.0.3",
     "postcss": "^8.4.14",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.12",
     "tailwindcss": "^3.1.6",
