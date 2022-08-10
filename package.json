@@ -11,11 +11,16 @@
     "lint": "next lint",
     "generate:component": "hygen new fc",
     "generate:page": "hygen new page-fc",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "aria-hidden": "^1.1.3",
+    "body-scroll-lock": "^4.0.0-beta.0",
+    "date-fns": "^2.29.1",
+    "focus-trap": "^6.9.4",
     "next": "12.2.2",
+    "random-words": "^1.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
@@ -28,6 +33,7 @@
     "@storybook/builder-vite": "^0.2.0",
     "@storybook/react": "^6.5.9",
     "@storybook/testing-library": "^0.0.13",
+    "@types/body-scroll-lock": "^3.1.0",
     "@types/node": "18.0.5",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
