@@ -45,6 +45,12 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             </NextLink>
           </li>
         </ul>
+        <div className={clsx('mt-2 text-center text-sm text-gray-400')}>
+          <span>image by </span>
+          <a target="_blank" href="https://icons8.com" rel="noreferrer">
+            Icons8
+          </a>
+        </div>
       </footer>
     </div>
   )

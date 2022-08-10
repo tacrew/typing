@@ -25,7 +25,7 @@ export const BaseModal = ({ isOpen, onClose, children }: BaseModalProps) => {
         ref={ref}
         role="dialog"
         aria-modal
-        className={clsx('w-full rounded bg-black p-5')}
+        className={clsx('w-full rounded bg-black p-5 md:w-1/2')}
       >
         {children}
       </div>

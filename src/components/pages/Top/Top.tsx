@@ -21,7 +21,11 @@ export const TopPage = () => {
           むずかしい？
         </h2>
 
-        <div className={clsx('mt-20 flex justify-center')}>
+        <div className={clsx('mx-auto mt-6 flex w-3/4 md:w-1/3')}>
+          <img src="/images/hero_image.gif" alt="" />
+        </div>
+
+        <div className={clsx('mt-10 flex justify-center')}>
           <Button onClick={open}>挑戦してみる</Button>
         </div>
 

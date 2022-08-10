@@ -46,7 +46,7 @@ export const TypingResult = ({
         </Button>
         <Button theme="outline" onClick={onRetryOnAnotherMode}>{`同じ問題に${
           MODE_TITLE[mode === 'easy' ? 'normal' : 'easy']
-        }モードで挑戦してみる`}</Button>
+        }モードで挑戦`}</Button>
       </section>
     </div>
   )

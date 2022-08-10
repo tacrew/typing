@@ -86,11 +86,13 @@ export const TypingBoardModal = ({
             )}
           </div>
         ) : time === undefined ? (
-          <TypingBoard
-            questions={questions}
-            mode={typingMode}
-            onCompleted={handleTypingCompleted}
-          />
+          <div>
+            <TypingBoard
+              questions={questions}
+              mode={typingMode}
+              onCompleted={handleTypingCompleted}
+            />
+          </div>
         ) : (
           <TypingResult
             mode={typingMode}
