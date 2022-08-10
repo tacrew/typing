@@ -21,7 +21,7 @@ export const TopPage = () => {
           むずかしい？
         </h2>
 
-        <div className={clsx('mx-auto mt-6 flex w-3/4 md:w-1/3')}>
+        <div className={clsx('mx-auto mt-6 flex w-3/4 md:w-1/4')}>
           <img src="/images/hero_image.gif" alt="" />
         </div>
 
