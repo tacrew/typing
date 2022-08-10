@@ -51,6 +51,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
             Icons8
           </a>
         </div>
+        <div className={clsx('h-0 font-electroharmonix')}>electro harmonix</div>
       </footer>
     </div>
   )
