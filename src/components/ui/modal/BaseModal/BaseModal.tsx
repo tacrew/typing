@@ -18,14 +18,14 @@ export const BaseModal = ({ isOpen, onClose, children }: BaseModalProps) => {
   return createPortal(
     <div
       className={clsx(
-        'fixed inset-0 flex items-center justify-center bg-black/50 p-5'
+        'fixed inset-0 flex items-center justify-center bg-gray-600/40 p-5'
       )}
     >
       <div
         ref={ref}
         role="dialog"
         aria-modal
-        className={clsx('w-full rounded bg-white p-5')}
+        className={clsx('w-full rounded bg-black p-5')}
       >
         {children}
       </div>

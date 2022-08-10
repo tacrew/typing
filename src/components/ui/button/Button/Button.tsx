@@ -15,12 +15,13 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
+      type="button"
       className={clsx(
-        'w-full',
         'flex items-center justify-center',
         'outline-none',
-        'rounded-md',
+        'rounded-md font-bold',
         'transition duration-200',
+        'active:scale-[0.98]',
         'disabled:cursor-not-allowed',
         BUTTON_THEME_CLASS_NAME[theme],
         BUTTON_SIZE_CLASS_NAME[size]

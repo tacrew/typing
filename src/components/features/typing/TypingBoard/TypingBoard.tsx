@@ -3,11 +3,17 @@ import { KeyboardEventHandler, useState } from 'react'
 
 import type { TypingBoardProps } from './type'
 
-export const TypingBoard = ({ questions }: TypingBoardProps) => {
+import { useAutoFocus } from '@/hooks/utils'
+
+import { FONT } from './const'
+
+export const TypingBoard = ({ questions, mode }: TypingBoardProps) => {
   const [questionIndex, setQuestionIndex] = useState(0)
   const [entered, setEntered] = useState('')
   const [notEntered, setNotEntered] = useState(questions[questionIndex])
   const [typedError, setTypedError] = useState(false)
+
+  const containerRef = useAutoFocus()
 
   const handleKeyPress: KeyboardEventHandler<HTMLDivElement> = (e) => {
     if (notEntered.startsWith(e.key)) {
@@ -27,21 +33,23 @@ export const TypingBoard = ({ questions }: TypingBoardProps) => {
 
   return (
     <div
+      ref={containerRef}
       onKeyPress={handleKeyPress}
       tabIndex={0}
-      className={clsx('outline-none')}
+      className={clsx('bg-black outline-none')}
     >
       <div className={clsx('text-right text-gray-500')}>
         {`${questionIndex + 1}/${questions.length}`}
       </div>
       <div
         className={clsx(
-          'flex items-center justify-center rounded p-6 font-electroharmonix',
-          typedError && 'bg-red-200 opacity-40'
+          'flex items-center justify-center rounded p-6',
+          FONT[mode],
+          typedError && 'bg-red-300 opacity-40'
         )}
       >
-        <span className={clsx('text-3xl text-orange-300')}>{entered}</span>
-        <span className={clsx('text-3xl')}>{notEntered}</span>
+        <span className={clsx('text-5xl text-sky-300')}>{entered}</span>
+        <span className={clsx('text-5xl text-white')}>{notEntered}</span>
       </div>
     </div>
   )

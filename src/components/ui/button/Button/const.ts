@@ -4,21 +4,18 @@ import type { ButtonSize, ButtonTheme } from './type'
 
 export const BUTTON_THEME_CLASS_NAME: Record<ButtonTheme, string> = {
   solid: clsx(
-    'bg-black text-white',
-    'hover:opacity-60',
-    'active:opacity-90',
-    'disabled:bg-gray-300 disabled:text-gray-500'
+    'bg-sky-400 text-white',
+    'hover:bg-sky-500',
+    'disabled:bg-sky-300 disabled:text-gray-300'
   ),
   outline: clsx(
-    'bg-white text-black border border-gray-400',
-    'hover:bg-gray-100',
-    'active:bg-gray-200 active:border-none',
-    'disabled:text-gray-500'
+    'bg-transparent text-sky-400 border border-sky-400',
+    'hover:bg-sky-400 hover:text-white',
+    'disabled:text-gray-400 disabled:border-gray-400 disabled:hover:bg-white'
   ),
   ghost: clsx(
     'bg-white text-black',
     'hover:bg-gray-100',
-    'active:bg-gray-200',
     'disabled:text-gray-700'
   ),
 }

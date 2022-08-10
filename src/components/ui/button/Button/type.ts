@@ -5,11 +5,10 @@ export type ButtonSize = 'sm' | 'base'
 
 export type ButtonProps = Pick<
   ComponentProps<'button'>,
-  'id' | 'name' | 'disabled' | 'onFocus' | 'onBlur'
+  'id' | 'name' | 'disabled' | 'onClick' | 'onFocus' | 'onBlur'
 > & {
   theme?: ButtonTheme
   size?: ButtonSize
   isLoading?: boolean
   children: ReactNode
-  onClick: () => void
 }
