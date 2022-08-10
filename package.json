@@ -11,7 +11,7 @@
     "lint": "next lint",
     "generate:component": "hygen new fc",
     "generate:page": "hygen new page-fc",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "body-scroll-lock": "^4.0.0-beta.0",
     "focus-trap": "^6.9.4",
     "next": "12.2.2",
+    "random-words": "^1.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
