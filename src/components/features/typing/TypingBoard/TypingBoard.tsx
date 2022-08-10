@@ -36,7 +36,7 @@ export const TypingBoard = ({ questions }: TypingBoardProps) => {
       </div>
       <div
         className={clsx(
-          'flex items-center justify-center rounded p-6',
+          'flex items-center justify-center rounded p-6 font-electroharmonix',
           typedError && 'bg-red-200 opacity-40'
         )}
       >
