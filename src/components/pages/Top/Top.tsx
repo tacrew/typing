@@ -13,7 +13,7 @@ export const TopPage = () => {
       <div className={clsx('py-8')}>
         <h2
           className={clsx(
-            'text-center text-4xl font-bold leading-normal text-white'
+            'text-center text-3xl font-bold leading-normal text-white md:text-4xl'
           )}
         >
           かんたんな単語なのに

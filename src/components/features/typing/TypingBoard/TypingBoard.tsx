@@ -7,7 +7,11 @@ import { useAutoFocus } from '@/hooks/utils'
 
 import { FONT } from './const'
 
-export const TypingBoard = ({ questions, mode }: TypingBoardProps) => {
+export const TypingBoard = ({
+  questions,
+  mode,
+  onCompleted,
+}: TypingBoardProps) => {
   const [questionIndex, setQuestionIndex] = useState(0)
   const [entered, setEntered] = useState('')
   const [notEntered, setNotEntered] = useState(questions[questionIndex])
@@ -24,10 +28,14 @@ export const TypingBoard = ({ questions, mode }: TypingBoardProps) => {
       setTimeout(() => setTypedError(false), 100)
     }
 
-    if (notEntered.length === 1 && questionIndex < questions.length - 1) {
+    if (notEntered.length !== 1) return
+
+    if (questionIndex < questions.length - 1) {
       setQuestionIndex((prev) => prev + 1)
       setEntered('')
       setNotEntered(questions[questionIndex + 1])
+    } else {
+      onCompleted()
     }
   }
 
@@ -36,7 +44,7 @@ export const TypingBoard = ({ questions, mode }: TypingBoardProps) => {
       ref={containerRef}
       onKeyPress={handleKeyPress}
       tabIndex={0}
-      className={clsx('bg-black outline-none')}
+      className={clsx('w-full bg-black outline-none')}
     >
       <div className={clsx('text-right text-gray-500')}>
         {`${questionIndex + 1}/${questions.length}`}

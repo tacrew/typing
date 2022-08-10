@@ -3,35 +3,69 @@ import { useState, useEffect } from 'react'
 
 import type { TypingBoardModalProps } from './type'
 
-import { TypingBoard } from '@/components/features/typing'
+import { TypingBoard, TypingResult } from '@/components/features/typing'
 import type { TypingMode } from '@/components/features/typing/TypingBoard/type'
 import { Button, BaseModal } from '@/components/ui'
-import { useCountdown } from '@/hooks/utils'
+import { useCountdown, useTimer } from '@/hooks/utils'
 import { generateRandomWords } from '@/utils/word'
 
-import { COUNT_DOWN_SEC } from './const'
+import { COUNT_DOWN_SEC, MODE_TITLE } from './const'
 
 export const TypingBoardModal = ({
   isOpen,
   onClose,
 }: TypingBoardModalProps) => {
   const [typingMode, setTypingMode] = useState<TypingMode>('normal')
+  const [questions, setQuestions] = useState<string[]>([])
 
   const [count, isRunning, { startCountdown, resetCountdown }] = useCountdown({
     countStart: COUNT_DOWN_SEC,
   })
+
+  const {
+    time,
+    start: startTimer,
+    stop: stopTimer,
+    reset: resetTimer,
+  } = useTimer()
 
   const handleStart = (mode: TypingMode) => {
     setTypingMode(mode)
     startCountdown()
   }
 
+  const handleTypingCompleted = () => stopTimer()
+
+  const handleReset = () => {
+    resetCountdown()
+    resetTimer()
+    setQuestions(generateRandomWords(5, 8))
+  }
+
+  const handleRetryOnSameMode = () => {
+    handleReset()
+    startCountdown()
+  }
+
+  const handleRetryOnAnotherMode = () => {
+    resetCountdown()
+    resetTimer()
+    handleStart(typingMode === 'easy' ? 'normal' : 'easy')
+  }
+
   useEffect(() => {
     if (isOpen) {
-      resetCountdown()
+      handleReset()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen])
+
+  useEffect(() => {
+    if (count === 0) {
+      startTimer()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [count])
 
   return (
     <BaseModal isOpen={isOpen} onClose={onClose}>
@@ -43,16 +77,28 @@ export const TypingBoardModal = ({
             ) : (
               <div className={clsx('flex flex-col justify-center space-y-4')}>
                 <Button theme="solid" onClick={() => handleStart('normal')}>
-                  通常モードで始める
+                  {`${MODE_TITLE.normal}モードで始める`}
                 </Button>
                 <Button theme="outline" onClick={() => handleStart('easy')}>
-                  簡単モードで始める
+                  {`${MODE_TITLE.easy}モードで始める`}
                 </Button>
               </div>
             )}
           </div>
+        ) : time === undefined ? (
+          <TypingBoard
+            questions={questions}
+            mode={typingMode}
+            onCompleted={handleTypingCompleted}
+          />
         ) : (
-          <TypingBoard questions={generateRandomWords(5)} mode={typingMode} />
+          <TypingResult
+            mode={typingMode}
+            questions={questions}
+            resultTime={time}
+            onRetryOnSameMode={handleRetryOnSameMode}
+            onRetryOnAnotherMode={handleRetryOnAnotherMode}
+          />
         )}
       </div>
     </BaseModal>

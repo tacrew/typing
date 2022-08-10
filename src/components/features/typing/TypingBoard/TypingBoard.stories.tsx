@@ -19,5 +19,6 @@ export default meta
 export const Base: ComponentStoryObj<typeof TypingBoard> = {
   args: {
     questions: ['time', 'maintain'],
+    mode: 'normal',
   },
 }
