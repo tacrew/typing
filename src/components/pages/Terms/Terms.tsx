@@ -1,4 +1,3 @@
-import {} from 'react'
 import clsx from 'clsx'
 
 import { AppLayout } from '@/components/app'
@@ -6,8 +5,8 @@ import { AppLayout } from '@/components/app'
 export const TermsPage = () => {
   return (
     <AppLayout>
-      <div className={clsx('mx-auto w-2/3 py-8 text-white')}>
-        <h1 className={clsx('text-xl font-bold')}>利用規約</h1>
+      <div className={clsx('mx-auto px-4 pt-2 text-white md:w-2/3 md:px-0')}>
+        <h1 className={clsx('text-center text-xl font-bold')}>利用規約</h1>
         <p className={clsx('mt-2 text-gray-300')}>
           この利用規約は本サービスの利用条件を定めるものです。ユーザーの方々（以下「ユーザー」）には、本規約に則って本サービスをご利用いただきます。
         </p>

@@ -8,7 +8,7 @@ import { ROUTE } from '@/constatns/route'
 export const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <div className={clsx('grid min-h-screen grid-rows-layout bg-black')}>
-      <header className="mx-auto w-2/3 py-4">
+      <header className="mx-auto px-4 py-4">
         <NextLink href={ROUTE.top()}>
           <a className={clsx('flex items-center space-x-4')}>
             <div className={clsx('h-8 w-8')}>
