@@ -3,6 +3,8 @@ import Head from 'next/head'
 import { SERVICE } from '@/constatns/common'
 
 export const AppHead = () => {
+  const origin = typeof window !== 'undefined' ? window.location.origin : ''
+
   return (
     <Head>
       <title>{SERVICE.TITLE}</title>
@@ -13,7 +15,7 @@ export const AppHead = () => {
       <meta property="og:site_name" content={SERVICE.TITLE} />
       <meta property="og:description" content={SERVICE.DESCRIPTION} />
       <meta property="og:type" content="website" />
-      <meta property="og:image" content={SERVICE.OGP_IMAGE} />
+      <meta property="og:image" content={`${origin}/${SERVICE.OGP_IMAGE}`} />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link rel="icon" href={SERVICE.ICON_URL}></link>
       <link rel="canonical" href={SERVICE.URL} />

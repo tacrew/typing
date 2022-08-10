@@ -31,14 +31,14 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
           )}
         >
           <li>
-            <NextLink href={ROUTE.top()}>
+            <NextLink href={ROUTE.terms()}>
               <a className={clsx('transition duration-200 hover:opacity-50')}>
                 利用規約
               </a>
             </NextLink>
           </li>
           <li>
-            <NextLink href={ROUTE.top()}>
+            <NextLink href={ROUTE.privacy()}>
               <a className={clsx('transition duration-200 hover:opacity-50')}>
                 プライバシーポリシー
               </a>
